@@ -1,0 +1,39 @@
+version: '3.0'
+services:
+
+  # postgres service/container
+  postgres:
+    image: postgres:9
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      # Map the postgres data folder to the host making it persist
+      # We may also use docker volumes. Personal preference.
+      - ./postgres/data:/var/lib/postgresql/data
+
+  # forum service/container
+  forum:
+    build: forum
+    environment:
+      # Misago database env vars
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=postgres
+      # Misago superuser
+      - SUPERUSER_USERNAME=admin
+      - SUPERUSER_PASSWORD=qwertyuiop
+      - SUPERUSER_EMAIL=admin@examples.com
+      # Specify django settings module
+      - DJANGO_SETTINGS_MODULE=forum.settings
+    volumes:
+      - ./forum:/srv/forum
+    depends_on:
+      # Make sure the postgres container is at least running before we start this one.
+      # This also implies using `links` exposing the postgres service to this container
+      - postgres
+    ports:
+      - "8000:80"
+    tty: true
