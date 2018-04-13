@@ -12,15 +12,14 @@ RUN apt-get update && apt-get install -y \
     cron \
     postgresql-client
 
-# Add requirements and install them. We do this unnecessasy rebuilding.
 ADD requirements.txt /
 RUN pip install -r requirements.txt
 
 # Add project source and run
-# ADD . /srv/forum (We don't need this in development, leaving out for now)
+ADD . /misago
 
-WORKDIR /srv/forum
+WORKDIR /misago
 
 EXPOSE 80
 
-CMD ./entrypoint_dev.sh
+CMD ./entrypoint.sh

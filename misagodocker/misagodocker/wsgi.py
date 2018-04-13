@@ -1,5 +1,5 @@
 """
-WSGI config for forum project.
+WSGI config for misagodocker project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -12,6 +12,6 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "forum.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "misagodocker.settings")
 
 application = get_wsgi_application()

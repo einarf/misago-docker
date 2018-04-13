@@ -1,0 +1,4 @@
+misago==0.17.3
+uWSGI==2.0.17
+django-redis==4.9.0
+uwsgitop==0.10

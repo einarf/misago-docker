@@ -1,0 +1,1 @@
+0 0 * * * cd /misago && ./cron.sh >> /misago/cron.log 2>&1
