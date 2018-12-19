@@ -2,6 +2,8 @@
 misago-docker
 =============
 
+DEPRECATED. Use official docker solution. https://github.com/rafalp/misago_docker. The contents of the repo can still be useful for people who run custom setups.
+
 A docker standalone compose setup for running [Misago](https://github.com/rafalp/Misago) with dependecies.
 
 This setup configures and runs for following services:
